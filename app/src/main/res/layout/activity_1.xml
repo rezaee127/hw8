@@ -10,29 +10,46 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="فرم ثبت اطلاعات"
+        android:background="@color/white2"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="20dp"
+        android:layout_marginTop="16dp"
+        android:minHeight="35dp"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <EditText
         android:id="@+id/editTextFullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/textView1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@id/textView1" />
 
     <EditText
-        android:id="@+id/editTextUserName"
+        android:id="@+id/editTextNationalCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="user name"
-        android:inputType="textPersonName"
+        android:hint="@string/NationalCode"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/editTextFullName"
@@ -41,34 +58,34 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextFullName" />
 
     <EditText
-        android:id="@+id/editTextEmailAddress"
+        android:id="@+id/editTextBirthPlace"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/BirthPlace"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextUserName"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNationalCode"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextUserName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
+        app:layout_constraintStart_toStartOf="@+id/editTextNationalCode"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNationalCode" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/editTextAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:hint="آدرس"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBirthPlace"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/editTextBirthPlace"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBirthPlace" />
 
     <EditText
         android:id="@+id/editTextReTypePassword"
@@ -76,21 +93,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Re-type Password"
-        android:inputType="textPassword"
+        android:hint="کدپستی"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAddress"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintStart_toStartOf="@+id/editTextAddress"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
     <TextView
         android:id="@+id/Gender"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Gender"
+        android:text="جنسیت"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
         app:layout_constraintHorizontal_bias="0.03"
@@ -103,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/purple_700"
-        android:text="Register"
+        android:text="ثبت اطلاعات"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
@@ -142,27 +159,37 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="0dp"
+        android:gravity="right"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextReTypePassword"
         app:layout_constraintTop_toBottomOf="@+id/Gender">
+        <RadioButton
+            android:id="@+id/Male"
+            android:layout_width="91dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="40dp"
+            android:text="مرد"
+           android:layoutDirection="rtl"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/Female"
             android:layout_width="97dp"
             android:layout_height="44dp"
-            android:text="Female"
+            android:text="زن"
+            android:layoutDirection="rtl"
+            android:layout_marginStart="40dp"
             android:textSize="16sp" />
 
-        <RadioButton
-            android:id="@+id/Male"
-            android:layout_width="91dp"
-            android:layout_height="45dp"
-            android:text="Male"
-            android:textSize="16sp" />
+
+
+
+
     </RadioGroup>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
