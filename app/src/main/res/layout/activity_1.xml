@@ -88,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextBirthPlace" />
 
     <EditText
-        android:id="@+id/editTextReTypePassword"
+        android:id="@+id/editTextPostCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -109,10 +109,10 @@
         android:layout_marginTop="12dp"
         android:text="جنسیت"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPostCode"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="@+id/editTextReTypePassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextReTypePassword" />
+        app:layout_constraintStart_toStartOf="@+id/editTextPostCode"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPostCode" />
 
     <Button
         android:id="@+id/register"
@@ -123,9 +123,9 @@
         android:text="ثبت اطلاعات"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPostCode"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextReTypePassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPostCode"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -162,9 +162,9 @@
         android:gravity="right"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/editTextReTypePassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPostCode"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextReTypePassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPostCode"
         app:layout_constraintTop_toBottomOf="@+id/Gender">
         <RadioButton
             android:id="@+id/Male"
