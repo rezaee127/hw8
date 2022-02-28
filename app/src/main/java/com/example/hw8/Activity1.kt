@@ -9,19 +9,19 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import com.example.hw8.databinding.Activity1Binding
 import org.jetbrains.annotations.NotNull
-lateinit var pref: SharedPreferences
+
+
+var gender = ""
+var name = ""
+var address = ""
+var postCode = ""
+var nationalCode = ""
+var birthPlace = ""
 
 class Activity1 : AppCompatActivity() {
     lateinit var binding: Activity1Binding
-
+    lateinit var pref: SharedPreferences
     lateinit var edit: SharedPreferences.Editor
-    var gender = ""
-    var name = ""
-    var address = ""
-    var postCode = ""
-    var nationalCode = ""
-    var birthPlace = ""
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,50 +29,60 @@ class Activity1 : AppCompatActivity() {
         //setContentView(R.layout.activity_1)
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if(name.isNullOrBlank()) {
+        pref = getPreferences(Context.MODE_PRIVATE)
+        if (pref.getString("Name","").isNullOrBlank())
             register()
-        } else
+        else
             goToActivity2()
+
+
 
     }
 
     private fun goToActivity2() {
        var intent=Intent(this,Activity2::class.java)
-
+       intent.putExtra("Name", pref.getString("Name",""))
+        intent.putExtra("NationalCode", pref.getString("NationalCode",""))
+        intent.putExtra("BirthPlace",  pref.getString("BirthPlace",""))
+        intent.putExtra("Address", pref.getString("Address",""))
+        intent.putExtra("PostCode", pref.getString("PostCode",""))
+        intent.putExtra("Gender",  pref.getString("Gender",""))
         startActivity(intent)
     }
 
 
     private fun register() {
 
-        binding.register.setOnClickListener {
 
-            if (binding.editTextFullName.text.isBlank())
-                binding.editTextFullName.error = "همه فیلدها را پر کنید"
-            else if (binding.editTextNationalCode.text.isBlank())
-                binding.editTextNationalCode.error = "همه فیلدها را پر کنید"
-            else if (binding.editTextBirthPlace.text.isNullOrBlank())
-                binding.editTextBirthPlace.error = "همه فیلدها را پر کنید"
-            else if (binding.editTextAddress.text.isBlank())
-                binding.editTextAddress.error = "همه فیلدها را پر کنید"
-            else if (binding.editTextPostCode.text.isBlank())
-                binding.editTextPostCode.error = "همه فیلدها را پر کنید"
-            else if (binding.editTextPostCode.length() != 10)
-                binding.editTextPostCode.error = "کدپستی اشتباه است"
-            else if (binding.editTextNationalCode.length() != 10)
-                binding.editTextNationalCode.error = "کدملی اشتباه است"
-            else if (!binding.Female.isChecked && !binding.Male.isChecked) {
-                binding.Female.error = "یک گزینه را انتخاب کنید"
-            } else {
-                if (binding.Female.isChecked)
-                    gender = "مونث"
-                else if (binding.Male.isChecked)
-                    gender = "مذکر"
 
-                sharedPref()
+            binding.register.setOnClickListener {
+
+                if (binding.editTextFullName.text.isBlank())
+                    binding.editTextFullName.error = "همه فیلدها را پر کنید"
+                else if (binding.editTextNationalCode.text.isBlank())
+                    binding.editTextNationalCode.error = "همه فیلدها را پر کنید"
+                else if (binding.editTextBirthPlace.text.isNullOrBlank())
+                    binding.editTextBirthPlace.error = "همه فیلدها را پر کنید"
+                else if (binding.editTextAddress.text.isBlank())
+                    binding.editTextAddress.error = "همه فیلدها را پر کنید"
+                else if (binding.editTextPostCode.text.isBlank())
+                    binding.editTextPostCode.error = "همه فیلدها را پر کنید"
+                else if (binding.editTextPostCode.length() != 10)
+                    binding.editTextPostCode.error = "کدپستی اشتباه است"
+                else if (binding.editTextNationalCode.length() != 10)
+                    binding.editTextNationalCode.error = "کدملی اشتباه است"
+                else if (!binding.Female.isChecked && !binding.Male.isChecked) {
+                    binding.Female.error = "یک گزینه را انتخاب کنید"
+                } else {
+                    if (binding.Female.isChecked)
+                        gender = "مونث"
+                    else if (binding.Male.isChecked)
+                        gender = "مذکر"
+
+                    sharedPref()
+                }
             }
-        }
+
     }
 
     private fun sharedPref(){
@@ -83,13 +93,13 @@ class Activity1 : AppCompatActivity() {
         postCode = binding.editTextPostCode.text.toString()
 
 
-        pref = getPreferences(Context.MODE_PRIVATE)
 
         edit = pref.edit()
         edit.putString("Name", name)
         edit.putString("NationalCode", nationalCode)
         edit.putString("BirthPlace", birthPlace)
         edit.putString("Address", address)
+        edit.putString("PostCode", postCode)
         edit.putString("Gender", gender)
         edit.apply()
         Toast.makeText(this, "ذخیره اطلاعات انجام شد", Toast.LENGTH_LONG).show()

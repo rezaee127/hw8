@@ -20,7 +20,7 @@
         android:paddingEnd="8dp"
         android:background="@color/white2"
         android:textColor="@color/teal_700"
-        android:gravity=""
+        android:gravity="center_vertical"
         android:text="مشاهده اطلاعات ثبت شده"/>
 
         <TextView
@@ -31,7 +31,7 @@
             android:background="@color/white2"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="نام "/>
 
         <TextView
@@ -42,7 +42,7 @@
             android:background="@color/white2"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="کد ملی "/>
         <TextView
             android:id="@+id/textViewBirthPlace"
@@ -52,7 +52,7 @@
             android:background="@color/white2"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="محل تولد  "/>
         <TextView
             android:id="@+id/textViewAddress"
@@ -62,7 +62,7 @@
             android:background="@color/white2"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="آدرس  "/>
         <TextView
             android:id="@+id/textViewPostCode"
@@ -72,7 +72,7 @@
             android:background="@color/white2"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="کد پستی  "/>
         <TextView
             android:id="@+id/textViewGender"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:paddingEnd="8dp"
             android:minHeight="40dp"
-            android:gravity=""
+            android:gravity="center_vertical"
             android:text="جنسیت  "/>
         <Button
             android:id="@+id/buttonEdit"
