@@ -10,18 +10,18 @@ import androidx.annotation.NonNull
 import com.example.hw8.databinding.Activity1Binding
 import org.jetbrains.annotations.NotNull
 
-
-var gender = ""
-var name = ""
-var address = ""
-var postCode = ""
-var nationalCode = ""
-var birthPlace = ""
+var editFlag=false
 
 class Activity1 : AppCompatActivity() {
     lateinit var binding: Activity1Binding
     lateinit var pref: SharedPreferences
     lateinit var edit: SharedPreferences.Editor
+    var gender = ""
+    var name = ""
+    var address = ""
+    var postCode = ""
+    var nationalCode = ""
+    var birthPlace = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +30,30 @@ class Activity1 : AppCompatActivity() {
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
         pref = getPreferences(Context.MODE_PRIVATE)
-        if (pref.getString("Name","").isNullOrBlank())
+        if (pref.getString("Name","").isNullOrBlank()) {
             register()
-        else
+        }else if(editFlag){
+            editProfile()
+        }else {
             goToActivity2()
+        }
 
 
 
+    }
+
+    private fun editProfile() {
+        binding.editTextFullName.setText( pref.getString("Name",""))
+        binding.editTextNationalCode.setText(pref.getString("NationalCode",""))
+        binding.editTextBirthPlace.setText(  pref.getString("BirthPlace",""))
+        binding.editTextAddress.setText( pref.getString("Address",""))
+        binding.editTextPostCode.setText(pref.getString("PostCode",""))
+        if(pref.getString("Gender","")=="مونث"){
+            binding.Female.isChecked=true
+        }else{
+            binding.Male.isChecked=true
+        }
+        register()
     }
 
     private fun goToActivity2() {
@@ -52,8 +69,6 @@ class Activity1 : AppCompatActivity() {
 
 
     private fun register() {
-
-
 
             binding.register.setOnClickListener {
 
