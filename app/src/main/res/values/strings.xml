@@ -3,4 +3,10 @@
     <string name="name">نام و نام خانوادگی</string>
     <string name="NationalCode">کد ملی</string>
     <string name="BirthPlace">محل تولد</string>
+    <string name="address">آدرس</string>
+    <string name="postcode">کدپستی</string>
+    <string name="gender">جنسیت</string>
+    <string name="register">ثبت اطلاعات</string>
+    <string name="male">مرد</string>
+    <string name="female">زن</string>
 </resources>

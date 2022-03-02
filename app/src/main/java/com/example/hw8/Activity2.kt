@@ -33,6 +33,7 @@ class Activity2 : AppCompatActivity() {
            var intent= Intent(this,Activity1::class.java)
            intent.putExtra("ClearFlag",true)
            startActivity(intent)
+           finish()
        }
     }
 

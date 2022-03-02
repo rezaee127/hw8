@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hw8.databinding.Activity1Binding
@@ -21,14 +22,20 @@ class Activity1 : AppCompatActivity() {
     var postCode = ""
     var nationalCode = ""
     var birthPlace = ""
-
+    var arrayOfViews=ArrayList<EditText>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_1)
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
         pref = getPreferences(Context.MODE_PRIVATE)
+
+        arrayOfViews= arrayListOf(binding.editTextFullName,binding.editTextNationalCode,binding.editTextPostCode,
+        binding.editTextAddress,binding.editTextBirthPlace)
+        editBorderViews()
+
         clearFlag=intent.getBooleanExtra("ClearFlag",false)
         editFlag=intent.getBooleanExtra("EditFlag",false)
 
@@ -45,7 +52,15 @@ class Activity1 : AppCompatActivity() {
         }
 
 
+    }
 
+
+
+    private fun editBorderViews() {
+        for (view in arrayOfViews){
+            view.background=getDrawable (R.drawable.shape_border)
+            view.setPadding(20,0,20,0)
+        }
     }
 
     private fun editProfile() {
