@@ -3,19 +3,18 @@ package com.example.hw8
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hw8.databinding.Activity1Binding
-import org.jetbrains.annotations.NotNull
 
-var editFlag=false
 
 class Activity1 : AppCompatActivity() {
     lateinit var binding: Activity1Binding
     lateinit var pref: SharedPreferences
     lateinit var edit: SharedPreferences.Editor
+    var editFlag=false
+    var clearFlag=false
     var gender = ""
     var name = ""
     var address = ""
@@ -30,6 +29,13 @@ class Activity1 : AppCompatActivity() {
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
         pref = getPreferences(Context.MODE_PRIVATE)
+        clearFlag=intent.getBooleanExtra("ClearFlag",false)
+        editFlag=intent.getBooleanExtra("EditFlag",false)
+
+        if (clearFlag) {
+            pref.edit().clear().commit()
+        }
+
         if (pref.getString("Name","").isNullOrBlank()) {
             register()
         }else if(editFlag){

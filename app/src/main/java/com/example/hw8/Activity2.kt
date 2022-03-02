@@ -1,12 +1,14 @@
 package com.example.hw8
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.hw8.databinding.Activity1Binding
 import com.example.hw8.databinding.Activity2Binding
+import java.io.File
 
 class Activity2 : AppCompatActivity() {
     lateinit var binding:Activity2Binding
@@ -16,19 +18,28 @@ class Activity2 : AppCompatActivity() {
         //setContentView(R.layout.activity_2)
         binding = Activity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        //var share=getSharedPreferences(resources.getString(R.string.app_name),MODE_PRIVATE)
+
 
         setText()
 
         editButtonOnClick()
 
+        newUserButtonOnClick()
 
+    }
+
+    private fun newUserButtonOnClick() {
+       binding.buttonNewUser.setOnClickListener {
+           var intent= Intent(this,Activity1::class.java)
+           intent.putExtra("ClearFlag",true)
+           startActivity(intent)
+       }
     }
 
     private fun editButtonOnClick() {
         binding.buttonEdit.setOnClickListener {
-            editFlag=true
             var intent= Intent(this,Activity1::class.java)
+            intent.putExtra("EditFlag",true)
             startActivity(intent)
         }
     }
