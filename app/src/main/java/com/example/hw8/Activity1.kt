@@ -30,25 +30,25 @@ class Activity1 : AppCompatActivity() {
         binding = Activity1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        pref = getPreferences(Context.MODE_PRIVATE)
+        pref = getSharedPreferences("shared",MODE_PRIVATE)
 
         arrayOfViews= arrayListOf(binding.editTextFullName,binding.editTextNationalCode,binding.editTextPostCode,
         binding.editTextAddress,binding.editTextBirthPlace)
         editBorderViews()
-
-        clearFlag=intent.getBooleanExtra("ClearFlag",false)
         editFlag=intent.getBooleanExtra("EditFlag",false)
 
+       /* clearFlag=intent.getBooleanExtra("ClearFlag",false)
         if (clearFlag) {
             pref.edit().clear().commit()
         }
+        */
 
         if (pref.getString("Name","").isNullOrBlank()) {
             register()
         }else if(editFlag){
             editProfile()
         }else {
-            goToActivity2()
+            goToActivity2(this,Activity2())
         }
 
 
@@ -77,16 +77,7 @@ class Activity1 : AppCompatActivity() {
         register()
     }
 
-    private fun goToActivity2() {
-       var intent=Intent(this,Activity2::class.java)
-       intent.putExtra("Name", pref.getString("Name",""))
-        intent.putExtra("NationalCode", pref.getString("NationalCode",""))
-        intent.putExtra("BirthPlace",  pref.getString("BirthPlace",""))
-        intent.putExtra("Address", pref.getString("Address",""))
-        intent.putExtra("PostCode", pref.getString("PostCode",""))
-        intent.putExtra("Gender",  pref.getString("Gender",""))
-        startActivity(intent)
-    }
+
 
 
     private fun register() {
@@ -115,31 +106,20 @@ class Activity1 : AppCompatActivity() {
                     else if (binding.Male.isChecked)
                         gender = "مذکر"
 
-                    sharedPref()
+                    name = binding.editTextFullName.text.toString()
+                    nationalCode = binding.editTextNationalCode.text.toString()
+                    birthPlace = binding.editTextBirthPlace.text.toString()
+                    address = binding.editTextAddress.text.toString()
+                    postCode = binding.editTextPostCode.text.toString()
+
+                    sharedPref(name,nationalCode,birthPlace,
+                        address,postCode,gender,pref,
+                        this,Activity2())
                 }
             }
 
     }
 
-    private fun sharedPref(){
-        name = binding.editTextFullName.text.toString()
-        nationalCode = binding.editTextNationalCode.text.toString()
-        birthPlace = binding.editTextBirthPlace.text.toString()
-        address = binding.editTextAddress.text.toString()
-        postCode = binding.editTextPostCode.text.toString()
 
-
-
-        edit = pref.edit()
-        edit.putString("Name", name)
-        edit.putString("NationalCode", nationalCode)
-        edit.putString("BirthPlace", birthPlace)
-        edit.putString("Address", address)
-        edit.putString("PostCode", postCode)
-        edit.putString("Gender", gender)
-        edit.apply()
-        Toast.makeText(this, "ذخیره اطلاعات انجام شد", Toast.LENGTH_LONG).show()
-
-    }
 
 }
